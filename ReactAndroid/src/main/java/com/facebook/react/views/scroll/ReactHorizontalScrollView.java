@@ -277,7 +277,8 @@ public class ReactHorizontalScrollView extends HorizontalScrollView implements
   @Override
   public void fling(int velocityX) {
     if (mPagingEnabled) {
-      flingAndSnap(velocityX);
+      // flingAndSnap(velocityX);
+      smoothScrollAndSnap(velocityX);
     } else if (mScroller != null) {
       // FB SCROLLVIEW CHANGE
 
@@ -455,7 +456,8 @@ public class ReactHorizontalScrollView extends HorizontalScrollView implements
             // Only if we have pagingEnabled and we have not snapped to the page do we
             // need to continue checking for the scroll.  And we cause that scroll by asking for it
             mSnappingToPage = true;
-            flingAndSnap(0);
+            // flingAndSnap(0);
+            smoothScrollAndSnap(0);
             ViewCompat.postOnAnimationDelayed(ReactHorizontalScrollView.this,
               this,
               ReactScrollViewHelper.MOMENTUM_DELAY);
